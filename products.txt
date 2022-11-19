@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Paleta Babolat",
+    "price": 1800,
+    "src": "/resources/img/product-images/Babolat.jpg",
+    "id": 1
+  },
+  {
+    "name": "Paleta Head",
+    "price": 3200,
+    "src": "/resources/img/product-images/Head.jpg",
+    "id": 2
+  },
+  {
+    "name": "Paleta Wilson",
+    "price": 1800,
+    "src": "/resources/img/product-images/Wilson.jpg",
+    "id": 3
+  },
+  {
+    "name": "Paleta Bullpadel",
+    "price": 877,
+    "src": "/resources/img/product-images/Bullpadel.jpg",
+    "id": 4
+  },
+  {
+    "name": "Paleta Adidas",
+    "price": 780,
+    "src": "/resources/img/product-images/Adidas.jpg",
+    "id": 5
+  }
+
+]
