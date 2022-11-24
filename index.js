@@ -69,22 +69,9 @@ routerProducts.delete('/:id', async (req, res) => {
 
 
 
-routerProducts.put('/:id', async (req, res) => {
-    const result = await products.update(req.body)
-    console.log(result)
-
-    if (result.length > 0) {
-
-        res.send(`
-         product : ${JSON.stringify(result[1])}
-         replaced : ${JSON.stringify(result[0])}
-         position : ${result[0].id}
-        `)
-    }
-    else {
-        res.sendStatus(400)
-    }
-})
+routerProducts.put('/:id', (req, res) => {
+    products.updateById(parseInt(req.params.id), req.body).then(dataFile => res.send(dataFile));
+});
 
 
 const PORT = 8080

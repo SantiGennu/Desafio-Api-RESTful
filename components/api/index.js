@@ -4,6 +4,7 @@ class Container {
     constructor(file) {
         this.file = file
 
+
     }
 
     async writeFile(data) {
@@ -29,31 +30,22 @@ class Container {
 
         }
     }
-    async update(object) {
-        const products = await this.getAll()
-        const index = products.map(element => element.id).indexOf(object.id)
-        if (index >= 0) {
-            const oldProduct = products[index]
-
-            object.id = products[index].id
-            products[index] = object
-            try {
-                await this.writeFile(products)
-
-                console.log('Guardado exitoso')
-                return (object, oldProduct)
-
-            } catch (error) {
-                console.error('Error de escritura')
-                console.error(error)
-                return []
+    async updateById(id, product) {
+        let index;
+        console.log(id, product);
+        try {
+            const products = await fs.promises.readFile(this.file, 'utf-8');
+            this.fileInfo = JSON.parse(products);
+            index = this.fileInfo.findIndex(item => item.id === id);
+            if (index !== -1) {
+                this.fileInfo[index] = { ...product, id: this.fileInfo[index].id }
+                await fs.promises.writeFile(this.file, JSON.stringify(this.fileInfo), 'utf-8');
+                return 'update succesfull.';
+            } else {
+                return { error: 'Product was not found it.' };
             }
-
-        }
-        else {
-
-            console.log('Not found')
-            return []
+        } catch (error) {
+            return `error: ${error}.`;
         }
     }
 
